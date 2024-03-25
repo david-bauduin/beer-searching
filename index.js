@@ -21,7 +21,7 @@ app.get('/search', async (req, res) => {
   await page.waitForSelector('.BeerTab___StyledDiv-gWeJQq');
 
   const beers = await page.evaluate(() => {
-  const beerDivs = document.querySelectorAll('.BeerTab___StyledDiv-gWeJQq');
+  const beerDivs = Array.from(document.querySelectorAll('.BeerTab___StyledDiv-gWeJQq')).slice(0, 8);
 
   const beers = [];
   beerDivs.forEach(beerDiv => {
