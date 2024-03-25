@@ -1,10 +1,10 @@
 {
   "name": "searching-beer",
   "private": true,
-  "main":"index.js",
+  "main": "index.js",
   "scripts": {
-	  "start": "node index.js",
-	  "heroku-postbuild": "mkdir ./.cache && mv /app/.cache/puppeteer ./.cache"
+    "start": "node index.js",
+    "heroku-postbuild": "mkdir ./.cache && mv /app/.cache/puppeteer ./.cache"
   },
   "engines": {
     "node": "16.x"
@@ -12,10 +12,10 @@
   "dependencies": {
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.5",
     "express": "^4.19.1",
     "install": "^0.13.0",
     "npm": "^10.5.0",
     "puppeteer": "^22.6.0"
   }
 }
-
