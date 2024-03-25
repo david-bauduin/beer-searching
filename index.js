@@ -5,7 +5,14 @@ const port = 3000;
 
 app.get('/search', async (req, res) => {
   const query = req.query.q;
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: [
+      "--disable-setuid-sandbox",
+      "--no-sandbox",
+      "--single-process",
+      "--no-zygote",
+    ],
+  });
   const page = await browser.newPage();
   // page.on('console', msg => console.log('PAGE LOG:', msg.text()));
   
