@@ -2,16 +2,25 @@ const express = require('express');
 const puppeteer = require('puppeteer');
 const app = express();
 const port = 3000;
+require("dotenv").config();
+
+app.get("/", (req, res) => {
+  res.send("Render beer searching server is up and running!");
+});
 
 app.get('/search', async (req, res) => {
   const query = req.query.q;
-  const browser = await puppeteer.launch({
+const browser = await puppeteer.launch({
     args: [
       "--disable-setuid-sandbox",
       "--no-sandbox",
       "--single-process",
       "--no-zygote",
     ],
+    executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath(),
   });
   const page = await browser.newPage();
   // page.on('console', msg => console.log('PAGE LOG:', msg.text()));
